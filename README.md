@@ -36,14 +36,14 @@ docker-compose up -d
 * Prometheus (metrics database) `http://<host-ip>:7070`
 * Prometheus-Pushgateway (push acceptor for ephemeral and batch jobs) `http://<host-ip>:7071`
 * AlertManager (alerts management) `http://<host-ip>:7073`
-* Grafana (visualize metrics) `http://<host-ip>:4000`
+* Grafana (visualize metrics) `http://<host-ip>:3000`
 * NodeExporter (host metrics collector)
 * cAdvisor (containers metrics collector)
 * Caddy (reverse proxy and basic auth provider for prometheus and alertmanager)
 
 ## Setup Grafana
 
-Navigate to `http://<host-ip>:4000` and login with user ***admin*** password ***admin***. You can change the credentials in the compose file or by supplying the `ADMIN_USER` and `ADMIN_PASSWORD` environment variables via .env file on compose up. The config file can be added directly in grafana part like this
+Navigate to `http://<host-ip>:3000` and login with user ***admin*** password ***admin***. You can change the credentials in the compose file or by supplying the `ADMIN_USER` and `ADMIN_PASSWORD` environment variables via .env file on compose up. The config file can be added directly in grafana part like this
 ```
 grafana:
   image: grafana/grafana:5.2.4
@@ -317,7 +317,7 @@ First perform a `docker-compose down` then modify your docker-compose.yml to inc
       - GF_USERS_ALLOW_SIGN_UP=false
     restart: unless-stopped
     expose:
-      - 4000
+      - 3000
     networks:
       - monitor-net
     labels:
@@ -355,7 +355,7 @@ To run the grafana container as `user: 104` change your `docker-compose.yml` lik
       - GF_USERS_ALLOW_SIGN_UP=false
     restart: unless-stopped
     expose:
-      - 4000
+      - 3000
     networks:
       - monitor-net
     labels:
