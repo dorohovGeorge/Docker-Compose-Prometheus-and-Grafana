@@ -1,5 +1,5 @@
 :7070 {
-    basic_auth /  {$ADMIN_USER} {$ADMIN_PASSWORD}
+    basic_auth /  {$ADMIN_USER} {ADMIN_PASSWORD_HASH}
     proxy / prometheus:7070 {
             transparent
         }
