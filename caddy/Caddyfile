@@ -2,9 +2,7 @@
     basic_auth /* {
                        {$ADMIN_USER} {$ADMIN_PASSWORD_HASH}
                    }
-    proxy / prometheus:7070 {
-            transparent
-        }
+    reverse_proxy prometheus:7070
 
     errors stderr
     tls off
@@ -14,9 +12,7 @@
     basic_auth /* {
                        {$ADMIN_USER} {$ADMIN_PASSWORD_HASH}
                    }
-    proxy / alertmanager:7073 {
-            transparent
-        }
+    reverse_proxy alertmanager:7073
 
     errors stderr
     tls off
@@ -26,20 +22,13 @@
     basic_auth /* {
                        {$ADMIN_USER} {$ADMIN_PASSWORD_HASH}
                    }
-    proxy / pushgateway:7071 {
-            transparent
-        }
-
+    reverse_proxy pushgateway:7071 
     errors stderr
     tls off
 }
 
 :3000 {
-    proxy / grafana:3000 {
-            transparent
-            websocket
-        }
-
+    reverse_proxy grafana:3000
     errors stderr
     tls off
 }
