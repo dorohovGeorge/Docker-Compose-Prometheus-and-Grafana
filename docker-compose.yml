@@ -25,23 +25,7 @@ services:
       - '--web.enable-lifecycle'
     restart: unless-stopped
     expose:
-      - 9090
-    networks:
-      - monitor-net
-    labels:
-      org.label-schema.group: "monitoring"
-
-  alertmanager:
-    image: prom/alertmanager:v0.20.0
-    container_name: alertmanager
-    volumes:
-      - ./alertmanager:/etc/alertmanager
-    command:
-      - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=/alertmanager'
-    restart: unless-stopped
-    expose:
-      - 9093
+      - 7070
     networks:
       - monitor-net
     labels:
@@ -61,7 +45,7 @@ services:
       - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
     restart: unless-stopped
     expose:
-      - 9100
+      - 7100
     networks:
       - monitor-net
     labels:
@@ -78,7 +62,7 @@ services:
       #- /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
     restart: unless-stopped
     expose:
-      - 8080
+      - 6060
     networks:
       - monitor-net
     labels:
@@ -96,7 +80,7 @@ services:
       - GF_USERS_ALLOW_SIGN_UP=false
     restart: unless-stopped
     expose:
-      - 3000
+      - 4000
     networks:
       - monitor-net
     labels:
@@ -107,7 +91,7 @@ services:
     container_name: pushgateway
     restart: unless-stopped
     expose:
-      - 9091
+      - 7071
     networks:
       - monitor-net
     labels:
@@ -117,10 +101,10 @@ services:
     image: stefanprodan/caddy
     container_name: caddy
     ports:
-      - "3000:3000"
-      - "9090:9090"
-      - "9093:9093"
-      - "9091:9091"
+      - "4000:4000"
+      - "7070:7070"
+      - "7073:7073"
+      - "7071:7071"
     volumes:
       - ./caddy:/etc/caddy
     environment:

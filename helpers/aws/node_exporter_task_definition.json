@@ -4,8 +4,8 @@
         {
             "portMappings": [
                 {
-                    "hostPort": 9100,
-                    "containerPort": 9100,
+                    "hostPort": 7100,
+                    "containerPort": 7100,
                     "protocol": "tcp"
                 }
             ],

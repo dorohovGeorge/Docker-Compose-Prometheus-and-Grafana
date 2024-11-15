@@ -7,7 +7,7 @@ To get started on AWS ECS and EC2:
 *For EC2/ECS nodes*:
 - Import the ecs task definition and add cadvisor and node-exporter service/task definition and run them on each host you want to be monitored
 - Any hosts which have "Monitoring: On" tag will be automatically added in the targets
-- Expose ports 9100 and 9191 to your Prometheus host
+- Expose ports 7100 and 9191 to your Prometheus host
 
 *For Prometheus host*:
 

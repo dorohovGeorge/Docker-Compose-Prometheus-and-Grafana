@@ -1,6 +1,6 @@
-:9090 {
+:7070 {
     basicauth / {$ADMIN_USER} {$ADMIN_PASSWORD}
-    proxy / prometheus:9090 {
+    proxy / prometheus:7070 {
             transparent
         }
 
@@ -8,9 +8,9 @@
     tls off
 }
 
-:9093 {
+:7073 {
     basicauth / {$ADMIN_USER} {$ADMIN_PASSWORD}
-    proxy / alertmanager:9093 {
+    proxy / alertmanager:7073 {
             transparent
         }
 
@@ -18,9 +18,9 @@
     tls off
 }
 
-:9091 {
+:7071 {
     basicauth / {$ADMIN_USER} {$ADMIN_PASSWORD}
-    proxy / pushgateway:9091 {
+    proxy / pushgateway:7071 {
             transparent
         }
 
@@ -28,8 +28,8 @@
     tls off
 }
 
-:3000 {
-    proxy / grafana:3000 {
+:4000 {
+    proxy / grafana:4000 {
             transparent
             websocket
         }

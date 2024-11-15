@@ -18,24 +18,24 @@ scrape_configs:
   - job_name: 'nodeexporter'
     scrape_interval: 5s
     static_configs:
-      - targets: ['nodeexporter:9100']
+      - targets: ['nodeexporter:7100']
 
   - job_name: 'cadvisor'
     scrape_interval: 5s
     static_configs:
-      - targets: ['cadvisor:8080']
+      - targets: ['cadvisor:6060']
 
   - job_name: 'prometheus'
     scrape_interval: 10s
     static_configs:
-      - targets: ['localhost:9090']
+      - targets: ['localhost:7070']
 
 
 # sample scrape configuration for AWS EC2
   - job_name: 'nodeexporter'
     ec2_sd_configs:
       - region: us-east-1
-        port: 9100
+        port: 7100
     relabel_configs:
         # Only monitor instances which have a tag called Monitoring "Monitoring"
       - source_labels: [__meta_ec2_tag_Monitoring]
