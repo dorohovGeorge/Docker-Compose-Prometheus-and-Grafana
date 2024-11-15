@@ -1,5 +1,5 @@
 :7070 {
-    basicauth / {$ADMIN_USER} {$ADMIN_PASSWORD}
+    basic_auth / { {$ADMIN_USER} {$ADMIN_PASSWORD} }
     proxy / prometheus:7070 {
             transparent
         }
@@ -9,7 +9,7 @@
 }
 
 :7073 {
-    basicauth / {$ADMIN_USER} {$ADMIN_PASSWORD}
+    basic_auth / { {$ADMIN_USER} {$ADMIN_PASSWORD} }
     proxy / alertmanager:7073 {
             transparent
         }
@@ -19,7 +19,7 @@
 }
 
 :7071 {
-    basicauth / {$ADMIN_USER} {$ADMIN_PASSWORD}
+    basic_auth / { {$ADMIN_USER} {$ADMIN_PASSWORD} }
     proxy / pushgateway:7071 {
             transparent
         }
